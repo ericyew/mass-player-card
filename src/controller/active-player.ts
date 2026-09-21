@@ -137,6 +137,9 @@ export class ActivePlayerController {
     this._config = config;
     this.useExpressive = config.expressive;
     this.useVibrant = config.expressive_scheme == "vibrant";
+    if (config.expressive && config.player.hide.artwork) {
+      this.createAndApplyExpressiveScheme();
+    }
   }
   public get config() {
     return this._config;

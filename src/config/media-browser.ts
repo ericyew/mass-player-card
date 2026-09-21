@@ -143,7 +143,8 @@ export const DEFAULT_MEDIA_BROWSER_CONFIG: MediaBrowserConfig = {
 
 const MEDIA_BROWSER_HIDDEN_ITEMS = [
   "back_button",
-  "search",
+  "filter_button",
+  "search_button",
   "titles",
   "enqueue_menu",
   "add_to_queue_button",

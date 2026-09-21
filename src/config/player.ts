@@ -136,12 +136,12 @@ export const DEFAULT_PLAYER_CONFIG: PlayerConfig = {
 };
 
 const PLAYER_HIDDEN_ITEMS = [
-  "favorite",
-  "mute",
+  "favorite_button",
+  "mute_button",
   "player_selector",
-  "power",
-  "repeat",
-  "shuffle",
+  "power_button",
+  "repeat_button",
+  "shuffle_button",
   "volume",
   "group_selector",
   "artwork",
