@@ -153,6 +153,7 @@ expressive_theme: expressive
 panel: false
 default_section: music_player
 sync_player_across_dashboard: false
+compact_wide_layout: false
 download_local: false
 entities:
   - entity_id: <MEDIA_PLAYER_ENTITY>
@@ -457,6 +458,7 @@ media_browser:
 | proxy_all_artwork            | boolean                                            | No       | false        | Download and encode all images despite accessibility         |
 | panel                        | boolean                                            | No       | false        | Displays a full-height card when enabled                     |
 | sync_player_across_dashboard | boolean                                            | No       | false        | Syncs the selected player across all cards on the dashboard. |
+| compact_wide_layout          | boolean                                            | No       | false        | Moves the section nav bar to a right-hand rail (instead of the bottom) and, on the Player tab in expressive mode, moves the shuffle/repeat/favorite buttons into that same right side. Intended for cards that end up short and wide, e.g. when `player.hide.artwork` is enabled. |
 | expressive                   | boolean                                            | No       | true         | Enables Material Expressive theme                            |
 | expressive_scheme            | [ExpressiveScheme](#expressive-scheme)             | No       | expressive   | The expressive scheme to use for the theme, see below        |
 | default_section              | [Section](#default-section)                        | No       | music_player | Default starting section, see below                          |

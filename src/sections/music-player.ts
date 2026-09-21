@@ -561,8 +561,9 @@ export class MusicPlayerCard extends LitElement {
     }
     return html`
       <div
-        class="media-controls controls-art ${this._config.layout.artwork_size} 
-        ${this.cardConfig.expressive ? `expressive` : ``}"
+        class="media-controls controls-art ${this._config.layout.artwork_size}
+        ${this.cardConfig.expressive ? `expressive` : ``}
+        ${this.cardConfig.compact_wide_layout ? `compact-wide` : ``}"
       >
         ${
           this.cardConfig.expressive
@@ -583,7 +584,8 @@ export class MusicPlayerCard extends LitElement {
         ${this.renderHeader()}
         <div
           id="player-card"
-          class="player-card ${expressive ? `expressive` : ``}"
+          class="player-card ${expressive ? `expressive` : ``}
+          ${this.hiddenElements.artwork ? `no-artwork` : ``}"
         >
           ${this.renderArtwork()} ${this.renderControls()}
         </div>

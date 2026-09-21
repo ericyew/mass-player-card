@@ -5,6 +5,7 @@ import {
   actionsControllerContext,
   activeMediaPlayerContext,
   activePlayerDataContext,
+  configContext,
   controllerContext,
   IconsContext,
   musicPlayerConfigContext,
@@ -21,12 +22,17 @@ import {
   PlayerControlsHiddenElementsConfig,
   PlayerLayoutConfig,
 } from "../../config/player";
+import { Config } from "../../config/config";
 import { MassCardController } from "../../controller/controller";
 import { ForceUpdatePlayerDataEventData } from "../../const/events";
 
 export class MassPlayerControlsBase extends LitElement {
   protected layoutConfig!: PlayerLayoutConfig;
   protected _config!: PlayerConfig;
+
+  @consume({ context: configContext, subscribe: true })
+  @state()
+  protected cardConfig!: Config;
 
   @consume({ context: activeMediaPlayerContext, subscribe: true })
   protected activeEntity!: ExtendedHassEntity;

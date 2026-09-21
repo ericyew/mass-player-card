@@ -25,6 +25,9 @@ export default css`
     padding-bottom: 8px;
     padding-top: 8px;
   }
+  .icons.compact-wide {
+    max-height: calc(var(--mass-player-card-height) - 8px);
+  }
   .loading-indicator {
     background-color: var(--md-sys-color-primary);
     justify-self: center;

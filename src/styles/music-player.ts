@@ -115,6 +115,10 @@ export default css`
     width: 100%;
     padding-bottom: var(--navbar-height);
   }
+  .media-controls.compact-wide {
+    bottom: 0;
+    padding-bottom: 0;
+  }
   .media-controls:not(.expressive) {
     background: var(--player-blur-color) !important;
   }
@@ -148,6 +152,9 @@ export default css`
   .player-card.expressive {
     background-color: var(--md-sys-color-background, var(--ha-card-background));
     border-radius: 8px 8px 0px 0px;
+  }
+  .player-card.expressive.no-artwork {
+    background-color: var(--expressive-player-blur-color) !important;
   }
   #player-card-header {
     position: absolute;

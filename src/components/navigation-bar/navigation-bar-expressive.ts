@@ -80,7 +80,11 @@ export class MassNavBar extends LitElement {
   private handleTabChanged = (section: Sections) => {
     const current_section = this.active_section;
     if (current_section) {
-      this.animateTabChange(current_section, section);
+      if (this.config?.compact_wide_layout) {
+        this.moveIndicatorVertical(section);
+      } else {
+        this.animateTabChange(current_section, section);
+      }
     }
     this.setActiveSection(section);
     if (section == Sections.MEDIA_BROWSER) {
@@ -217,6 +221,21 @@ export class MassNavBar extends LitElement {
     this.tabIndicator.style.width = `${this.tabIndicatorWidthPx.toString()}px`;
   };
 
+  private moveIndicatorVertical(to_section: Sections) {
+    this.animating = true;
+    const to_element = this.getSectionElement(to_section);
+    const indicator = this.tabIndicator;
+    if (!to_element || !indicator) {
+      this.animating = false;
+      return;
+    }
+    indicator.style.left = "";
+    indicator.style.width = "100%";
+    indicator.style.top = `${to_element.offsetTop.toString()}px`;
+    indicator.style.height = `${to_element.offsetHeight.toString()}px`;
+    this.animating = false;
+  }
+
   protected renderMusicPlayerTab(): TemplateResult {
     const section = Sections.MUSIC_PLAYER;
     const icon = this.Icons.MUSIC;
@@ -269,9 +288,10 @@ export class MassNavBar extends LitElement {
     `;
   }
   protected render(): TemplateResult {
+    const compactWide = this.config?.compact_wide_layout ? `compact-wide` : ``;
     return html`
       <div>
-        <nav id="navigation" class="tabbed expressive">
+        <nav id="navigation" class="tabbed expressive ${compactWide}">
           <link
             href="https://cdn.jsdelivr.net/npm/beercss@4.0.20/dist/cdn/beer.min.css"
             rel="stylesheet"
@@ -310,8 +330,10 @@ export class MassNavBar extends LitElement {
       if (!idx && idx != 0) {
         return;
       }
-      const leftPct = (idx / sections.length) * 100;
-      indicator.style = `left: ${leftPct.toString()}%; width: ${width.toString()}%;`;
+      const positionPct = (idx / sections.length) * 100;
+      indicator.style = config.compact_wide_layout
+        ? `top: ${positionPct.toString()}%; height: ${width.toString()}%; width: 100%;`
+        : `left: ${positionPct.toString()}%; width: ${width.toString()}%;`;
       const animation = document.createElement("wa-animation") as WaAnimation;
       animation.id = "animation";
       animation.duration = this.animationLength;

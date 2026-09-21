@@ -167,6 +167,10 @@ export default css`
     scrollbar-width: none;
     top: var(--view-header-height);
   }
+  #tracks.compact-wide {
+    height: var(--mass-player-card-height);
+    padding-bottom: 0;
+  }
   #tracks:not(.no-scroll) #virtualizer {
     overflow: scroll;
   }

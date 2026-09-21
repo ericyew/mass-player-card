@@ -132,9 +132,10 @@ export class MassNavBar extends LitElement {
     `;
   }
   protected render(): TemplateResult {
+    const compactWide = this.config?.compact_wide_layout ? `compact-wide` : ``;
     return html`
       <div>
-        <nav class="tabbed">
+        <nav class="tabbed ${compactWide}">
           <link
             href="https://cdn.jsdelivr.net/npm/beercss@4.0.20/dist/cdn/beer.min.css"
             rel="stylesheet"

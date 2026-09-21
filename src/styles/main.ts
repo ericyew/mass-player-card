@@ -164,6 +164,7 @@ export default css`
       1.5rem
     );
     --navbar-height: 4em;
+    --navbar-width: var(--mass-player-card-navbar-width, 4em);
     --search-text-color: var(
       --mass-player-card-search-text-color,
       var(--ha-color-text-primary)
@@ -311,6 +312,16 @@ export default css`
     background-color: var(--md-sys-color-background, var(--ha-card-background));
     font-family: var(--expressive-font-family);
   }
+  ha-card.compact-wide {
+    display: flex;
+    flex-direction: row;
+    height: var(--mass-player-card-height);
+  }
+  ha-card.compact-wide .section {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+  }
 
   #navbar.expressive {
     border-radius: 0px 0px var(--default-border-radius)
@@ -324,6 +335,19 @@ export default css`
   #navbar:not(.expressive) {
     border-radius: var(--default-border-radius);
     background-color: var(--card-background-color);
+  }
+  #navbar.compact-wide {
+    position: static;
+    flex: 0 0 auto;
+    width: var(--navbar-width, 4em);
+    height: 100%;
+  }
+  #navbar.compact-wide:not(.expressive) {
+    border-radius: 0px var(--default-border-radius) var(--default-border-radius)
+      0px;
+  }
+  #navbar.compact-wide.expressive {
+    border-radius: 0px;
   }
 
   .section.hidden {

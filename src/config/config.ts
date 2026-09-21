@@ -55,6 +55,7 @@ export interface Config {
   panel: boolean;
   default_section: ConfigSections | undefined;
   sync_player_across_dashboard: boolean;
+  compact_wide_layout: boolean;
 }
 
 export type ConfigSections =
@@ -103,6 +104,7 @@ export const DEFAULT_CONFIG: Config = {
   panel: false,
   default_section: undefined,
   sync_player_across_dashboard: false,
+  compact_wide_layout: false,
 };
 
 const ENTITY_DEFAULT_HIDDEN_ITEM_CONFIG: HiddenElementsConfig = {
@@ -244,6 +246,11 @@ export function createConfigForm() {
       },
       {
         name: "sync_player_across_dashboard",
+        required: false,
+        selector: { boolean: {}, default: false },
+      },
+      {
+        name: "compact_wide_layout",
         required: false,
         selector: { boolean: {}, default: false },
       },

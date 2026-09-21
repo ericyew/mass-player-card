@@ -13,12 +13,14 @@ import "./media-card";
 import { CardEnqueueService, CardSelectedService } from "../../const/actions";
 import {
   activeMediaBrowserCardsContext,
+  configContext,
   hassContext,
   mediaBrowserConfigContext,
 } from "../../const/context";
 import { ExtendedHass, mediaCardData, MediaCardItem } from "../../const/types";
 
 import styles from "./media-browser-cards-styles";
+import { Config } from "../../config/config";
 import { MediaBrowserConfig } from "../../config/media-browser";
 import { jsonMatch } from "../../utils/utility";
 import { EnqueueOptions } from "../../const/enums";
@@ -39,6 +41,20 @@ export class MediaBrowserCards extends LitElement {
   public onEnqueueAction!: CardEnqueueService;
   public onSelectAction!: CardSelectedService;
   private _items!: MediaCardItem[];
+
+  @consume({ context: configContext, subscribe: true })
+  public set cardConfig(config: Config | undefined) {
+    if (!jsonMatch(this._cardConfig, config) && config) {
+      this._cardConfig = config;
+      if (this.items) {
+        this.generateCode();
+      }
+    }
+  }
+  public get cardConfig() {
+    return this._cardConfig;
+  }
+  private _cardConfig!: Config;
 
   @consume({ context: mediaBrowserConfigContext, subscribe: true })
   public set browserConfig(config: MediaBrowserConfig | undefined) {
@@ -121,7 +137,12 @@ export class MediaBrowserCards extends LitElement {
         </mpc-browser-media-card>
       `;
     });
-    this.code = html` <div class="icons wa-grid">${result}</div> `;
+    const compactWideClass = this.cardConfig?.compact_wide_layout
+      ? `compact-wide`
+      : ``;
+    this.code = html`
+      <div class="icons wa-grid ${compactWideClass}">${result}</div>
+    `;
   }
 
   protected render() {

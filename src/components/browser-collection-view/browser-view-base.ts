@@ -390,13 +390,16 @@ export class BrowserViewBase extends LitElement {
     const expressiveClass = this.useExpressive ? `expressive` : ``;
     const vibrantClass = this.useVibrant ? `vibrant` : ``;
     const scrollClass = this.tracks?.length ? `` : `no-scroll`;
+    const compactWideClass = this.cardConfig.compact_wide_layout
+      ? `compact-wide`
+      : ``;
     return html`
       <div id="container" class="${expressiveClass} ${vibrantClass}">
         <div id="header">
           ${this.renderHeader()}
         </div>
           <div id="tracks-container ${expressiveClass}">
-            <div id="tracks" class="${scrollClass}">
+            <div id="tracks" class="${scrollClass} ${compactWideClass}">
               ${this.renderTracks()}
             </div>
           </div>

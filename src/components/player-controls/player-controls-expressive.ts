@@ -235,12 +235,15 @@ export class MassPlayerControlsExpressive extends MassPlayerControlsBase {
     `;
   }
   protected render(): TemplateResult {
+    const compactWide = this.cardConfig?.compact_wide_layout
+      ? `compact-wide`
+      : ``;
     return html`
       <link
         href="https://cdn.jsdelivr.net/npm/beercss@4.0.20/dist/cdn/beer.min.css"
         rel="stylesheet"
       />
-      <div id="div-controls">
+      <div id="div-controls" class="${compactWide}">
         ${this.renderUpperControls()} ${this.renderLowerControls()}
       </div>
     `;

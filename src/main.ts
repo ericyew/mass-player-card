@@ -306,8 +306,12 @@ export class MusicAssistantPlayerCard extends LitElement {
   }
   /* eslint-enable unicorn/template-indent */
   protected renderTabs() {
+    const compactWide = this.config.compact_wide_layout ? `compact-wide` : ``;
     return html`
-      <div id="navbar" class="${this.config.expressive ? `expressive` : ``}">
+      <div
+        id="navbar"
+        class="${this.config.expressive ? `expressive` : ``} ${compactWide}"
+      >
         ${
           this.config.expressive
             ? html`<mpc-navbar-expressive></mpc-navbar-expressive>`
@@ -335,6 +339,7 @@ export class MusicAssistantPlayerCard extends LitElement {
       html`
         <ha-card
           id="${this.config.expressive ? `expressive` : ``}"
+          class="${this.config.compact_wide_layout ? `compact-wide` : ``}"
           style="${style}"
         >
           ${this.renderSections()} ${this.renderTabs()}

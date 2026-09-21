@@ -129,6 +129,20 @@ export default css`
     margin-top: 12px;
     margin-bottom: 6px;
   }
+  #div-controls.compact-wide {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 12px;
+  }
+  #div-controls.compact-wide #player-controls-upper {
+    grid-column: 1;
+  }
+  #div-controls.compact-wide #player-controls-lower {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    place-self: center end;
+  }
 
   .icons.favorite.lower.active {
     color: var(--md-sys-color-tertiary);

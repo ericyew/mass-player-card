@@ -28,12 +28,25 @@ export default css`
   nav {
     height: var(--navbar-height);
   }
+  nav.compact-wide {
+    height: 100%;
+    width: var(--navbar-width);
+  }
   nav.tabbed {
     background-color: var(--tabbed-background-color);
+  }
+  nav.tabbed.compact-wide {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
   }
   .player-tabs {
     --primary-container: rgba(from var(--primary-color) r g b / 0.25);
     z-index: 2;
+  }
+  .compact-wide .player-tabs {
+    flex: 1 1 0 !important;
+    width: 100% !important;
   }
   #tab-indicator {
     height: 100%;
@@ -44,6 +57,9 @@ export default css`
     z-index: 1;
     will-change: transform;
     border-radius: var(--default-border-radius);
+  }
+  .compact-wide #tab-indicator {
+    max-height: none;
   }
   .tabbed {
     --tabbed-elevation: var(--md-sys-elevation-level1);
