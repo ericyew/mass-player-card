@@ -527,6 +527,9 @@ export class MusicPlayerCard extends LitElement {
     `;
   }
   protected renderArtwork(): TemplateResult {
+    if (this.hiddenElements.artwork) {
+      return html``;
+    }
     return html` <mpc-player-artwork></mpc-player-artwork>`;
   }
   protected renderVolumeRow(): TemplateResult {

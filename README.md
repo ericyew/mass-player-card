@@ -194,6 +194,7 @@ player:
     favorite_button: false
     volume: false
     mute_button: false
+    artwork: false
   layout:
     controls_layout: compact
     hide_labels: false
@@ -544,6 +545,7 @@ Multiple elements on the Music Player tab can be hidden. By default, all element
 | favorite_button     | bool  | No       | false       | Hides the favorite button                    |
 | volume              | bool  | No       | false       | Hides the volume button                      |
 | mute_button         | bool  | No       | false       | Hides the mute button                        |
+| artwork             | bool  | No       | false       | Hides the cover art and shrinks the card     |
 
 #### Music Player Layout Config
 The layout of the control buttons can be adjusted to your liking. Use the full default configuration below as an example.

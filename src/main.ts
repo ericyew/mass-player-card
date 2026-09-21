@@ -326,7 +326,9 @@ export class MusicAssistantPlayerCard extends LitElement {
   protected render() {
     const style = this.config.panel
       ? `--mass-player-card-height: calc(${window.innerHeight.toString()}px - 4rem - var(--header-height));`
-      : ``;
+      : this.config.player.hide.artwork
+        ? `--mass-player-card-height: var(--mass-player-card-no-artwork-height, 20em);`
+        : ``;
     return (
       this.error ??
       html`

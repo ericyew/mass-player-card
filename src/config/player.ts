@@ -29,6 +29,7 @@ export interface PlayerHiddenElementsConfig extends BaseHiddenElementsConfig {
   favorite_button: boolean;
   volume: boolean;
   mute_button: boolean;
+  artwork: boolean;
 }
 
 export interface PlayerLayoutConfig {
@@ -83,6 +84,7 @@ export const DEFAULT_PLAYER_HIDDEN_ELEMENTS_CONFIG: PlayerHiddenElementsConfig =
     track_title: false,
     header_title: false,
     header: false,
+    artwork: false,
   };
 export const DEFAULT_PLAYER_ICON_CONFIG: PlayerIcons = {
   shuffle: {
@@ -142,6 +144,7 @@ const PLAYER_HIDDEN_ITEMS = [
   "shuffle",
   "volume",
   "group_selector",
+  "artwork",
 ];
 
 function iconConfigForm(icon_name: string) {
